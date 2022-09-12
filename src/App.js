@@ -28,14 +28,16 @@ const quotesBank = [
 const QuoteBox = ({ quote, handleNewQuote }) => {
   return (
     <div id="quote-box">
-      <h2 id="text">{quote.text}</h2>
-      <h4 id="author">{quote.author}</h4>
-
+      <h2 id="text">
+        <i className="fa fa-quote-right"></i>
+        {quote.text}
+      </h2>
+      <h6 id="author">{quote.author}</h6>
       <div className="actions">
-        <a href="twitter.com/intent/tweet" target="_blank" id="tweet-quote">
-          Twitter
+        <a id="tweet-quote" href="twitter.com/intent/tweet">
+          <i class="fa fa-twitter-square" aria-hidden="true"></i>
         </a>
-        <button className="button" id="new-quote" onClick={handleNewQuote}>
+        <button id="new-quote" target="_blank" onClick={handleNewQuote}>
           New Quote
         </button>
       </div>
@@ -43,55 +45,19 @@ const QuoteBox = ({ quote, handleNewQuote }) => {
   );
 };
 
-// const getRandomQuote = () => {
-//   Math.round(Math.random() * (quotesBank.length - 1 - 0) + 0);
-// };
-
-// const App = () => {
-//   // const [quote, setQuote] = React.useState(quotesBank[getRandomQuote()]);
-//   const [quote, setQuote] = React.useState(quotesBank[getRandomQuote()]);
-//   const handleNewQuote = () => {
-//     setQuote(quotesBank[getRandomQuote()]);
-//   };
-
-//   return (
-//     <div className="App">
-//       <QuoteBox handleNewQuote={handleNewQuote} quote={quote} />
-//     </div>
-//   );
-// };
-
-const getRandomIndex = () => {
-  return Math.round(Math.random() * (quotesBank.length - 1 - 0) + 0);
-};
-
-// const App = () => {
-//   const [quote, setQuote] = React.useState(quoteData[getRandomIndex()]);
-
-//   const handleNewQuote = () => {
-//     setQuote(quoteData[getRandomIndex()]);
-//   };
-
-//   return (
-//     <div class="main">
-//       <QuoteBox handleNewQuote={handleNewQuote} quote={quote} />
-//     </div>
-//   );
-// };
-// const getRandomIndex = () => {
-//   Math.round(Math.random() * (quoteData.length - 1 - 0) + 0);
-// };
+const getRandomQuote = () =>
+  Math.round(Math.random() * (quotesBank.length - 1));
 
 const App = () => {
-  const [quote, setQuote] = React.useState(quotesBank[getRandomIndex()]);
+  const [quote, setQuote] = React.useState(quotesBank[getRandomQuote()]);
 
   const handleNewQuote = () => {
-    setQuote(quotesBank[getRandomIndex()]);
+    setQuote(quotesBank[getRandomQuote()]);
   };
 
   return (
-    <div className="main">
-      <QuoteBox handleNewQuote={handleNewQuote} quote={quote} />
+    <div className="App">
+      <QuoteBox quote={quote} handleNewQuote={handleNewQuote} />
     </div>
   );
 };
